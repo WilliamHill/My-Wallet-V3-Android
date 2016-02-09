@@ -198,7 +198,7 @@ public class WebSocketHandler {
 
                 mConnection = new WebSocketFactory()
                         .createSocket("wss://explorer.staging.blockchain.co.uk/inv")
-                        .addHeader("Origin", "https://explorer.staging.blockchain.co.uk/inv").recreate()
+                        .addHeader("Origin", "https://explorer.staging.blockchain.co.uk").recreate()
                         .addListener(new WebSocketAdapter() {
 
                             @Override
