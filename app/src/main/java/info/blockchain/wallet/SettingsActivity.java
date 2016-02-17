@@ -21,20 +21,11 @@ import android.widget.ListView;
 
 import info.blockchain.wallet.payload.PayloadFactory;
 import info.blockchain.wallet.util.AppUtil;
-import info.blockchain.wallet.util.DoubleEncryptionFactory;
 import info.blockchain.wallet.util.ExchangeRateFactory;
 import info.blockchain.wallet.util.MonetaryUtil;
 import info.blockchain.wallet.util.PrefsUtil;
 import info.blockchain.wallet.util.RootUtil;
 import info.blockchain.wallet.util.ToastCustom;
-
-import org.apache.commons.codec.DecoderException;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.bip44.Wallet;
-import org.bitcoinj.core.bip44.WalletFactory;
-import org.bitcoinj.crypto.MnemonicException;
-
-import java.io.IOException;
 
 import piuk.blockchain.android.R;
 
@@ -226,7 +217,10 @@ public class SettingsActivity extends PreferenceActivity {
             root.addView(bar);
         }
 
+        //TODO - don't use NoActionBar in styles.xml (affects BalanceFragment)
         bar.setTitle(getResources().getString(R.string.action_settings));
+        bar.setTitleTextColor(getResources().getColor(R.color.white));
+        bar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     // Introduced to prevent crash during DEXing step since SDK 23, but also speeds up DEXing in general
     dexOptions {
@@ -37,6 +37,10 @@ android {
     sourceSets.main {
         jniLibs.srcDir 'src/main/resources/lib'
     }
+
+    //TODO - the following needs to be added (SDK 23) to continue using org.apache.http.legacy as a work around.
+    //TODO - SSLVerifierUtil should use HttpURLConnection class instead (reduces network use, minimizes power consumption) http://developer.android.com/intl/ko/about/versions/marshmallow/android-6.0-changes.html
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -51,15 +55,15 @@ dependencies {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
     compile 'com.sothree.slidinguppanel:library:3.0.0'
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.android.support:recyclerview-v7:22.1.1'
+    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.android.support:recyclerview-v7:23.+'
+    compile 'com.android.support:cardview-v7:23.+'
     compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile 'com.android.support:multidex:1.0.1'
     compile 'org.thoughtcrime.ssl.pinning:AndroidPinning:1.0.0'
     compile 'com.neovisionaries:nv-websocket-client:1.19'
     compile('com.google.zxing:core:3.2.1') { transitive = true }
     compile 'com.getbase:floatingactionbutton:1.10.1'
-    compile 'com.android.support:cardview-v7:22.1.1'
 
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.3.1'
 }
